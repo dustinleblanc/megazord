@@ -1,3 +1,5 @@
 .idea
 vendor/
-www/
+docroot/
+bin/
+tests/_output/*
