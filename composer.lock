@@ -1,0 +1,36 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "dac44072e6325e37a496f9f4bd74731c",
+    "content-hash": "b99b5d99ac4e9bdf4e96164bf79170cb",
+    "packages": [
+        {
+            "name": "pantheon-systems/drops-8",
+            "version": "8.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pantheon-systems/drops-8.git",
+                "reference": "master"
+            },
+            "replace": {
+                "drupal/drupal": "self.version",
+                "drupal/field": "self.version",
+                "drupal/file": "self.version",
+                "drupal/path": "self.version",
+                "drupal/system": "self.version"
+            },
+            "type": "drupal-core"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

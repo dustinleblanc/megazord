@@ -9,5 +9,34 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "prefer-stable": true,
+    "require": {
+      "pantheon-systems/drops-8": "8.0.5"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org/"
+        },
+      {
+        "type": "package",
+        "package": {
+          "name": "pantheon-systems/drops-8",
+          "type": "drupal-core",
+          "version": "8.0.5",
+          "source": {
+            "url": "https://github.com/pantheon-systems/drops-8.git",
+            "type": "git",
+            "reference": "master"
+          },
+          "replace": {
+            "drupal/drupal": "self.version",
+            "drupal/field": "self.version",
+            "drupal/file": "self.version",
+            "drupal/system": "self.version",
+            "drupal/path": "self.version"
+          }
+        }
+      }
+    ]
 }
