@@ -1,0 +1,13 @@
+{
+    "name": "pantheon-systems/megazord",
+    "type": "project",
+    "license": "GPL 2",
+    "authors": [
+        {
+            "name": "Dustin LeBlanc",
+            "email": "dustin.m.leblanc@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

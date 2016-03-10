@@ -1,0 +1,41 @@
+---
+server:
+    install: '1'
+    packages: [vim, git, sendmail, drush, unzip, zip, g++, libssl-dev, apache2-utils]
+    timezone: America/Los_Angeles
+    locale: en_US.UTF-8
+vagrant_local:
+    install: '1'
+    vm: { base_box: trusty64, hostname: megazord.dev, ip: 192.168.33.99, memory: '2048', sharedfolder: ./, useVagrantCloud: '1', syncType: nfs }
+nginx:
+    install: '1'
+    docroot: /vagrant/www
+    servername: myApp.vb
+mariadb:
+    install: '1'
+    root_password: root
+    database: megazord
+    user: megazord
+    password: megazord
+    dump: ''
+redis:
+    install: '1'
+    port: '6379'
+zookeeper:
+    install: '1'
+    version: 3.4.6
+    port: '2181'
+solr:
+    install: '1'
+    port: '8983'
+    version: 5.2.0
+    cloud_mode: '1'
+php:
+    install: '1'
+    ppa: php5-5.6
+    packages: [php5-gd, php5-cli, php5-curl, php5-mcrypt, php5-mysql, php5-xdebug, php5-dev]
+xdebug:
+    install: '1'
+composer:
+    install: '1'
+
