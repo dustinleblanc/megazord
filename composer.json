@@ -1,7 +1,7 @@
 {
   "name": "pantheon-systems/megazord",
   "type": "project",
-  "license": "GPL 2",
+  "license": "GPL-2.0",
   "authors": [
     {
       "name": "Dustin LeBlanc",
@@ -12,7 +12,9 @@
   "prefer-stable": true,
   "require": {
     "pantheon-systems/drops-8": "8.0.5",
-    "codegyre/robo": "^0.7.1"
+    "codegyre/robo": "^0.7.1",
+    "composer/installers": "^1.0.20",
+    "cweagans/composer-patches": "1.4.*"
   },
   "require-dev": {
     "codeception/codeception": "*"
@@ -47,5 +49,14 @@
     "bin-dir": "bin"
   },
   "scripts": {
+  },
+  "extra": {
+    "installer-paths": {
+      "docroot": ["type:drupal-core"],
+      "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+      "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+      "docroot/drush/commands/{$name}": ["type:drupal-drush"]
+    }
   }
 }
