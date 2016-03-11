@@ -1,4 +1,5 @@
-.idea
+.idea/
+.vagrant/
 vendor/
 docroot/
 bin/
