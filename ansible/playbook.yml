@@ -9,8 +9,6 @@
     - nginx
     - mariadb
     - redis
-    - zookeeper
-    - solr
     - php
     - xdebug
     - composer

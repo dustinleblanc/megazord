@@ -9,7 +9,7 @@ vagrant_local:
     vm: { base_box: trusty64, hostname: megazord.dev, ip: 192.168.33.99, memory: '2048', sharedfolder: ./, useVagrantCloud: '1', syncType: nfs }
 nginx:
     install: '1'
-    docroot: /vagrant/www
+    docroot: /vagrant/docroot
     servername: myApp.vb
 mariadb:
     install: '1'
@@ -21,15 +21,6 @@ mariadb:
 redis:
     install: '1'
     port: '6379'
-zookeeper:
-    install: '1'
-    version: 3.4.6
-    port: '2181'
-solr:
-    install: '1'
-    port: '8983'
-    version: 5.2.0
-    cloud_mode: '1'
 php:
     install: '1'
     ppa: php5-5.6
