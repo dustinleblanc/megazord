@@ -1,62 +1,74 @@
 {
-  "name": "pantheon-systems/megazord",
-  "type": "project",
-  "license": "GPL-2.0",
-  "authors": [
-    {
-      "name": "Dustin LeBlanc",
-      "email": "dustin.m.leblanc@gmail.com"
-    }
-  ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require": {
-    "pantheon-systems/drops-8": "8.0.5",
-    "codegyre/robo": "^0.7.1",
-    "composer/installers": "^1.0.20",
-    "cweagans/composer-patches": "1.4.*"
-  },
-  "require-dev": {
-    "codeception/codeception": "*"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packagist.drupal-composer.org/"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "pantheon-systems/drops-8",
-        "type": "drupal-core",
-        "version": "8.0.5",
-        "source": {
-          "url": "https://github.com/pantheon-systems/drops-8.git",
-          "type": "git",
-          "reference": "master"
-        },
-        "replace": {
-          "drupal/drupal": "self.version",
-          "drupal/field": "self.version",
-          "drupal/file": "self.version",
-          "drupal/system": "self.version",
-          "drupal/path": "self.version"
+    "name": "pantheon-systems/megazord",
+    "type": "project",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Dustin LeBlanc",
+            "email": "dustin.m.leblanc@gmail.com"
         }
-      }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "pantheon-systems/drops-8": "8.0.5",
+        "codegyre/robo": "^0.7.1",
+        "composer/installers": "^1.0.20",
+        "cweagans/composer-patches": "1.4.*"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.1.*",
+        "drush/drush": "8.0.*",
+        "drupal/console": "0.9.*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org/"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "pantheon-systems/drops-8",
+                "type": "drupal-core",
+                "version": "8.0.5",
+                "source": {
+                    "url": "https://github.com/pantheon-systems/drops-8.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "replace": {
+                    "drupal/drupal": "self.version",
+                    "drupal/field": "self.version",
+                    "drupal/file": "self.version",
+                    "drupal/system": "self.version",
+                    "drupal/path": "self.version"
+                }
+            }
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+    },
+    "extra": {
+        "installer-paths": {
+            "docroot": [
+                "type:drupal-core"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "docroot/drush/commands/{$name}": [
+                "type:drupal-drush"
+            ]
+        }
     }
-  ],
-  "config": {
-    "bin-dir": "bin"
-  },
-  "scripts": {
-  },
-  "extra": {
-    "installer-paths": {
-      "docroot": ["type:drupal-core"],
-      "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-      "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-      "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-      "docroot/drush/commands/{$name}": ["type:drupal-drush"]
-    }
-  }
 }
