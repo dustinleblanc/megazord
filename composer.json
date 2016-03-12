@@ -19,7 +19,8 @@
     "require-dev": {
         "codeception/codeception": "2.1.*",
         "drush/drush": "8.0.*",
-        "drupal/console": "0.9.*"
+        "drupal/console": "0.9.*",
+        "boedah/robo-drush": "*"
     },
     "repositories": [
         {

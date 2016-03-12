@@ -6,5 +6,63 @@
  */
 class RoboFile extends \Robo\Tasks
 {
-    // define public methods as commands
+  use \Boedah\Robo\Task\Drush\loadTasks;
+
+  /**
+   * The location of our Drush executable.
+   */
+  const DRUSH_BIN = "bin/drush";
+
+  /**
+   * Build the site into the document root, ensuring our custom code and settings
+   * are able to be loaded by Drupal in either our local environment or on
+   * Pantheon in production.
+   *
+   * @param string $env
+   *
+   * @return $this
+   */
+  public function build($env = "dev")
+  {
+    $this->taskMirrorDir([
+      'src/modules' => 'docroot/modules/custom',
+      'src/themes' => 'docroot/themes/custom',
+    ])->run();
+    $this->_copy('src/settings.php', 'docroot/sites/default/settings.php');
+
+    if ($env == 'dev') {
+      $this->_copy('src/settings.local.php', 'docroot/sites/default/settings.local.php');
+    }
+    $this->_touch(".built");
+    return $this;
+  }
+
+  /**
+   * Install Drupal using some assumed defaults.
+   */
+  public function install()
+  {
+    if (!file_exists(".built")) {
+      $this->build();
+    }
+    $this->buildDrushTask()
+         ->siteName('Rock Solid')
+         ->siteMail('dustin@pantheon.io')
+         ->locale('en')
+         ->accountMail('dustin@pantheon.io')
+         ->accountName('dustin')
+         ->siteInstall('standard')
+         ->run();
+  }
+
+  /**
+   * Set all of our defaults for Drush tasks so we don't have to repeat boilerplate.
+   *
+   * @return $this
+   */
+  private function buildDrushTask()
+  {
+    return $this->taskDrushStack($this::DRUSH_BIN)
+                ->drupalRootDirectory((__DIR__) . '/docroot');
+  }
 }
