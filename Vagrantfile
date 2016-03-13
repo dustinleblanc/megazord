@@ -25,10 +25,10 @@ end
 Vagrant.configure("2") do |config|
 
     config.vm.provider :virtualbox do |v|
-        v.name = "megazord.dev"
+        v.name = "drupal.dev"
         v.customize [
             "modifyvm", :id,
-            "--name", "megazord.dev",
+            "--name", "drupal.dev",
             "--memory", 2048,
             "--natdnshostresolver1", "on",
             "--cpus", 1,
@@ -38,6 +38,8 @@ Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/trusty64"
     
     config.vm.network :private_network, ip: "192.168.33.99"
+    config.vm.hostname = "drupal.dev"
+  
     config.ssh.forward_agent = true
 
     # If ansible is in your path it will provision from your HOST machine
@@ -49,8 +51,14 @@ Vagrant.configure("2") do |config|
             ansible.limit = 'all'
         end
     else
-        config.vm.provision :shell, path: "ansible/windows.sh", args: ["megazord.dev"]
+        config.vm.provision :shell, path: "ansible/windows.sh", args: ["drupal.dev"]
     end
 
+
+
     config.vm.synced_folder "./", "/vagrant", type: "nfs"
+
+    config.vm.provision :shell, inline: <<SCRIPT
+    su vagrant -c 'cd /vagrant && composer install && bin/robo install;'
+SCRIPT
 end

@@ -10,13 +10,13 @@ vagrant_local:
 nginx:
     install: '1'
     docroot: /vagrant/docroot
-    servername: myApp.vb
+    servername: drupal.dev
 mariadb:
     install: '1'
-    root_password: root
-    database: megazord
-    user: megazord
-    password: megazord
+    root_password: drupal
+    database: drupal
+    user: drupal
+    password: drupal
     dump: ''
 redis:
     install: '1'
@@ -29,4 +29,3 @@ xdebug:
     install: '1'
 composer:
     install: '1'
-

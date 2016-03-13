@@ -46,6 +46,7 @@ class RoboFile extends \Robo\Tasks
       $this->build();
     }
     $this->buildDrushTask()
+         ->mysqlDbUrl('drupal:drupal@localhost/drupal')
          ->siteName('Rock Solid')
          ->siteMail('dustin@pantheon.io')
          ->locale('en')
