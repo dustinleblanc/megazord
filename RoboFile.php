@@ -45,13 +45,12 @@ class RoboFile extends \Robo\Tasks
   /**
    * Install Drupal using some assumed defaults.
    */
-  public function install()
+  public function install($env = "dev")
   {
     if (!file_exists(".built")) {
-      $this->build();
+      $this->build($env);
     }
     $this->buildDrushTask()
-         ->mysqlDbUrl('drupal:drupal@localhost/drupal')
          ->siteName('Rock Solid')
          ->siteMail('dustin@pantheon.io')
          ->locale('en')
