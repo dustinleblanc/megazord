@@ -14,6 +14,11 @@ class RoboFile extends \Robo\Tasks
   const DRUSH_BIN = "bin/drush";
 
   /**
+   * The location of our Codeception executable.
+   */
+  const CODECEPT_BIN = "bin/codecept";
+
+  /**
    * Build the site into the document root, ensuring our custom code and settings
    * are able to be loaded by Drupal in either our local environment or on
    * Pantheon in production.
@@ -54,6 +59,14 @@ class RoboFile extends \Robo\Tasks
          ->accountName('dustin')
          ->siteInstall('standard')
          ->run();
+  }
+
+  /**
+   * Runs Codeception Test Suite.
+   */
+  public function test()
+  {
+    $this->taskCodecept(self::CODECEPT_BIN)->run();
   }
 
   /**

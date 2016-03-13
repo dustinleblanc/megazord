@@ -8,5 +8,5 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://megazord.dev
+            url: http://drupal.dev
         - \Helper\Acceptance
