@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 /**
  * @file
  * Local development override configuration feature.

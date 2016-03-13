@@ -35,9 +35,16 @@ class RoboFile extends \Robo\Tasks
     ])->run();
     $this->_copy('src/settings.php', 'docroot/sites/default/settings.php');
 
-    if ($env == 'dev') {
-      $this->_copy('src/settings.local.php', 'docroot/sites/default/settings.local.php');
+    switch ($env) {
+      case "dev":
+        $this->_copy('src/settings.local.php', 'docroot/sites/default/settings.local.php');
+        break;
+
+      case "test":
+        $this->_copy('src/circle.settings.php', 'docroot/sites/default/settings.local.php');
+        break;
     }
+
     $this->_touch(".built");
     return $this;
   }
