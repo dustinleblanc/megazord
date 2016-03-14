@@ -27,24 +27,13 @@ class RoboFile extends \Robo\Tasks
    *
    * @return $this
    */
-  public function build($env = "dev")
+  public function build()
   {
     $this->taskMirrorDir([
-      'src/modules' => 'docroot/modules/custom',
-      'src/themes' => 'docroot/themes/custom',
+        'src/modules' => 'docroot/modules/custom',
+        'src/themes' => 'docroot/themes/custom',
     ])->run();
     $this->_copy('src/settings.php', 'docroot/sites/default/settings.php');
-
-    switch ($env) {
-      case "dev":
-        $this->_copy('src/settings.local.php', 'docroot/sites/default/settings.local.php');
-        break;
-
-      case "test":
-        $this->_copy('src/circle.settings.php', 'docroot/sites/default/settings.local.php');
-        break;
-    }
-
     $this->_touch(".built");
     return $this;
   }
