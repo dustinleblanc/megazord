@@ -44,16 +44,16 @@ class RoboFile extends \Robo\Tasks
   public function install($env = "dev")
   {
     if (!file_exists(".built")) {
-      $this->build($env);
+      $this->build();
     }
     $this->buildDrushTask()
-         ->siteName('Rock Solid')
-         ->siteMail('dustin@pantheon.io')
-         ->locale('en')
-         ->accountMail('dustin@pantheon.io')
-         ->accountName('dustin')
-         ->siteInstall('standard')
-         ->run();
+        ->siteName(getenv('SITE_NAME'))
+        ->siteMail(getenv('SITE_MAIL'))
+        ->locale(getenv('LOCALE'))
+        ->accountMail(getenv('ADMIN_MAIL'))
+        ->accountName(getenv('ADMIN_NAME'))
+        ->siteInstall(getenv('SITE_PROFILE'))
+        ->run();
   }
 
   /**
