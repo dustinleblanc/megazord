@@ -39,6 +39,37 @@ class RoboFile extends \Robo\Tasks
   }
 
   /**
+   * Deploy site to Pantheon.
+   */
+  public function deploy()
+  {
+    // Get a copy of Pantheon's repository and clean it out.
+    $this->taskGitStack()
+         ->dir('../')
+         ->cloneRepo(getenv('PANTHEON_REPO'), 'pantheon')
+         ->run();
+    $this->_cleanDir('../pantheon');
+    // Put all our code in the repo.
+    $this->_mirrorDir((__DIR__), '../pantheon');
+    // Get rid of dev dependencies
+    $this->taskComposerInstall()
+         ->dir('../pantheon')
+         ->preferDist()
+         ->noDev()
+         ->option('no-scripts')
+         ->run();
+    // Force commit and push the code.
+    $sha = getenv('CIRCLE_SHA1');
+    $username = getenv('CIRCLE_PROJECT_USERNAME');
+    $this->taskGitStack()
+         ->dir('../pantheon')
+         ->add('-Af')
+         ->commit("Successful verified merge of {$username} {$sha}.")
+         ->exec('push origin master -f')
+         ->run();
+  }
+
+  /**
    * Install Drupal using some assumed defaults.
    */
   public function install($env = "dev")
