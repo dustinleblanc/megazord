@@ -96,13 +96,17 @@ $settings['rebuild_access'] = TRUE;
 
 $settings['hash_salt'] = "mmm...salty";
 
-$databases['default']['default'] = [
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'drupal',
-  'host' => 'localhost',
-  'port' => '3306',
-  'driver' => 'mysql',
-  'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
+$databases = [
+    'default' => [
+        'default' => [
+            'database' => 'circle_test',
+            'username' => 'ubuntu',
+            'password' => '',
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'driver' => 'mysql',
+            'prefix' => '',
+            'collation' => 'utf8mb4_general_ci',
+        ]
+    ]
 ];

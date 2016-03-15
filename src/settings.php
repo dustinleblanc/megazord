@@ -16,21 +16,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  */
 include __DIR__ . "/settings.pantheon.php";
 
-if (!isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  $loader = new josegonzalez\Dotenv\Loader((__DIR__) . '/.env');
-  $loader->parse()->toEnv();
-  $databases['default']['default'] = [
-      'database' => getenv('DB_NAME'),
-      'username' => getenv('DB_USER'),
-      'password' => getenv('DB_PASS'),
-      'host' => getenv('DB_HOST'),
-      'port' => getenv('DB_PORT'),
-      'driver' => getenv('DB_DRIVER'),
-      'prefix' => getenv('DB_PREFIX'),
-      'collation' => getenv('DB_COLLATION'),
-  ];
-}
-
 /**
  * If there is a local settings file, then include it
  */
